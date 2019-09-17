@@ -7,4 +7,4 @@ while ! nc -z users-db 5432; do
 done
 
 echo "PostgreSQL started"
-uvicorn app.buscar_fichas:app --host 0.0.0.0
+gunicorn app.buscar_fichas:app --host 0.0.0.0

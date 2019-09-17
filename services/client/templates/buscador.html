@@ -1,0 +1,41 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} TODOS IDENTIFICADOS - BUSCADOR DE ARCHIVOS DE LA DICTADURA CHILENA</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<header>
+	<h2 align="center">TODOS IDENTIFICADOS</h2>
+	<h3 align="center">BUSCADOR DE ARCHIVOS DE LA DICTADURA CHILENA (73'-90')</h3>
+</header>
+
+<nav class="menu">
+  <ul>
+    <li><a href="{{url_for('index')}}">Fichas DINA</a></li>
+    <li><a>Desaparecidos y ejecutados</a></li>
+    <li><a>Violencia Sexual</a></li>
+    <li><a>Infantisidio</a></li>
+    <li><a>"Consejos de Guerra"</a></li>
+    <li><a href="{{url_for('index')}}">¿Qué es esto?</a></li>
+  </ul>
+</nav>
+
+<h3 align="center">Fichas de inteligencia de la DINA recuperadas desde Colonia Dignidad</h3>
+
+
+<div class="buscador" align='center'>
+<form method="POST">
+        Ingresar nombre: <input type="text" name="busqueda"> <input type="submit" value="Buscar">
+</form>
+</div>
+
+{% if resultado %}
+
+<div class="resultado" align="center" style="margin-top:20px;">
+  {% for table in resultado %}
+     {{ table|safe }}
+  {% endfor %}
+</div>
+{%endif%}
+
+<footer>
+  <p align='center'>Datos obtenidos de <a href="https://www.londres38.cl/1934/w3-article-96548.html" target="_blank">londres38</a>.</p>
+</footer> 

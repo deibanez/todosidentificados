@@ -1,0 +1,5 @@
+gitchangelog==3.0.4
+pystache==0.5.4
+pre-commit==1.16.1 # a framework for developing git hooks. See more in https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/
+bumpversion==0.5.3
+-r ./services/users/requirements.txt

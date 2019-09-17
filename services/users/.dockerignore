@@ -1,0 +1,10 @@
+env
+.dockerignore
+Dockerfile
+Dockerfile-prod
+htmlcov
+migrations
+
+
+# codecoverage
+services/users/htmlcov/

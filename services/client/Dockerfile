@@ -11,7 +11,7 @@ FROM python:3
 RUN mkdir /app
 WORKDIR /app
 # Expose the port uWSGI will listen on
-
+#EXPOSE 8000
 # Copy the requirements file in order to install
 # Python dependencies
 COPY requirements.txt .
@@ -22,4 +22,6 @@ COPY . .
 
 # Finally, we run uWSGI with the ini file we
 # created earlier
-CMD python /app/app.py
+CMD ["gunicorn", "-b", "0.0.0.0", "app"]
+
+#CMD ["gunicorn", "-b", "0.0.0.0:8000", "app"]

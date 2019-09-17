@@ -14,7 +14,7 @@ psql = app.config["PSQL"]
 def index():
     if request.method == 'POST':
         busqueda = request.form["busqueda"]
-        df_ = request.get('http://localhost:5432/buscar_ficha/'+busqueda)
+        df_ = request.get('http://localhost:5432/buscar_fichas/'+busqueda)
         df_f = pd.DataFrame({'Resultados de búsqueda: ': df_.apply(alistar_links_df, axis=1).tolist()})
         return render_template('buscador.html',resultado=[df_f.to_html(header="true",index=False, escape=False)])
     return render_template('buscador.html')

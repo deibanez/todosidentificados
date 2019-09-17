@@ -34,8 +34,7 @@ def buscar_n_fichas(search, df, col_nom='nombre', col_id='fichias_id', n=10, col
 #app.config.from_object('config')
 #psql = app.config["PSQL"]
 
-engine= create_engine('postgresql://{}:{}@{}:{}/{}'.format(psql['user'],psql['pa
-ss'],psql['host'],psql['port'],psql['db']))
+engine= create_engine('postgresql://{}:{}@{}:{}/{}'.format(psql['user'],psql['pass'],psql['host'],psql['port'],psql['db']))
 
 df = pd.read_sql('fichas', con=engine)
 
@@ -56,7 +55,7 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/buscar_fichas/{query}")
-def buscar_fichas(query: str, n: int = 10):
+@app.get("/buscador_fichas/{query}")
+def buscador_fichas(query: str, n: int = 10):
     df = buscar_n_fichas(query, n)
     return {"df": df}

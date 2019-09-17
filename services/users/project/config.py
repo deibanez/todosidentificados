@@ -1,5 +1,8 @@
 # services/users/project/config.py
 
+psql = {'host':'0.0.0.0','port':'5432','db':'fichas_dina', 'user':'postgres','pass':'postgres'}
+
+
 import os
 
 

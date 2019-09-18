@@ -55,7 +55,7 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/buscar_fichas/{query}")
-def buscar_fichas(query: str, n: int = 10):
+@app.get("/buscador_fichas/{query}")
+def buscador_fichas(query: str, n: int = 10):
     df = buscar_n_fichas(query, n)
     return {"df": df}

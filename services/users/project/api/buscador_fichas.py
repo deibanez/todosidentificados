@@ -34,8 +34,7 @@ def buscar_n_fichas(search, df, col_nom='nombre', col_id='fichias_id', n=10, col
 #app.config.from_object('config')
 #psql = app.config["PSQL"]
 
-engine= create_engine('postgresql://{}:{}@{}:{}/{}'.format(psql['user'],psql['pa
-ss'],psql['host'],psql['port'],psql['db']))
+engine= create_engine('postgresql://{}:{}@{}:{}/{}'.format(psql['user'],psql['pass'],psql['host'],psql['port'],psql['db']))
 
 df = pd.read_sql('fichas', con=engine)
 

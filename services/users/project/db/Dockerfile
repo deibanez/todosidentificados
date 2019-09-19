@@ -1,14 +1,8 @@
-#  base image
 FROM postgres:11.2-alpine
 
-WORKDIR /user/src/database
-# run create.sql on init
-ADD ./create.sql /docker-entrypoint-initdb.d
+RUN mkdir -p /tmp/psql_data/
 
-USER postgres
+COPY structure.sql /tmp/psql_data/
+COPY init_docker_postgres.sh /docker-entrypoint-initdb.d/
 
-COPY ./fichas_dina.back /user/src/database/fichas_dina.back
-
-#CMD ["psql fichas_dina < fichas_dina.dump"]
-#CMD ["psql", "fichas_dina < /user/src/database/fichas_dina.dump"]
-CMD ["pg_restore", "-U postgres -d fichas_dina /user/src/database/fichas_dina.back"]
+RUN chmod +x /tmp/psql_data/structure.sql

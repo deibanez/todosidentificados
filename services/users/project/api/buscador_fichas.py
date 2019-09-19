@@ -2,7 +2,6 @@ from fastapi import FastAPI
 import pandas as pd
 from sqlalchemy import create_engine
 from fuzzywuzzy import fuzz
-from .. config import psql
 
 def score(row, search,col_nom):
     """partial ratio score fuzzy"""
@@ -33,12 +32,12 @@ def buscar_n_fichas(search, df, col_nom='nombre', col_id='fichias_id', n=10, col
 
 #app.config.from_object('config')
 #psql = app.config["PSQL"]
-
+psql = {'host':'users-db','port':'5432','db':'fichas_dina', 'user':'postgres','pass':'postgres'}
 engine= create_engine('postgresql://{}:{}@{}:{}/{}'.format(psql['user'],psql['pass'],psql['host'],psql['port'],psql['db']))
 
 df = pd.read_sql('fichas', con=engine)
 
-print('##Datos cargados\nN°fichas:{}'.format(len(df)))
+print('##Datos cargados\nN fichas:{}'.format(len(df)))
 
 serie_lista = df.ficha_str.str.split('\n')
 nombre_de_ficha = serie_lista.apply(select_first_name, min_len=10,max_names = 7)

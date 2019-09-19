@@ -8,8 +8,8 @@ FROM python:3
 
 # Create the directory and instruct Docker to operate
 # from there from now on
-RUN mkdir /app
-WORKDIR /app
+#RUN mkdir /app
+#WORKDIR /app
 # Expose the port uWSGI will listen on
 #EXPOSE 8000
 # Copy the requirements file in order to install
@@ -20,8 +20,6 @@ RUN pip install -r requirements.txt
 # We copy the rest of the codebase into the image
 COPY . .
 
-# Finally, we run uWSGI with the ini file we
-# created earlier
-CMD ["gunicorn", "-b", "0.0.0.0", "app"]
+CMD ["gunicorn", "app:app","-b 0.0.0.0:3000"]
 
 #CMD ["gunicorn", "-b", "0.0.0.0:8000", "app"]

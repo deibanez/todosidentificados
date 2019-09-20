@@ -7,7 +7,7 @@ venv/
 .venv
 venv
 
-services/client/static/images/
+#services/client/static/images/
 
 # codecoverage
 services/users/htmlcov/

@@ -21,12 +21,11 @@ def select_first_name(serie_lista_row, keep='first_alpha', min_len=5, max_names
             else:
                 return '-'
 
-def buscar_n_fichas(search, df, col_nom='nombre', col_id='fichias_id', n=10, cols=
-['nombre', 'fichas_id']):
-    scores = df.apply(score, search=str(search).lower(), col_nom=col_nom, axis=1
-)
+def buscar_n_fichas(search, df_, col_nom='nombre', col_id='fichias_id', n_=10, cols=['nombre', 'fichas_id']):
+    scores = df.apply(score, search=str(search).lower(), col_nom=col_nom, axis=1)
     df['score'] = scores
-    df_r  = df.sort_values(by='score', ascending=False).iloc[:n][cols]
+    print(n_)
+    df_r  = df.sort_values(by='score', ascending=False).iloc[:n_][cols]
     return df_r
 
 
@@ -55,6 +54,8 @@ def read_root():
 
 
 @app.get("/buscador_fichas/{query}")
-def buscador_fichas(query: str, n: int = 10):
-    df = buscar_n_fichas(query, n)
-    return {"df": df}
+def buscador_fichas(query: str):
+    print('holaaa')
+    #print(query, n)
+    df_ = buscar_n_fichas(search=query, n_=10, df_=df)
+    return df_.to_json(orient='index')

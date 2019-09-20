@@ -15,7 +15,11 @@ def index():
         busqueda = request.form["busqueda"]
 
         req = requests.get('http://users:5000/buscador_fichas/'+busqueda)
-        df_ =  req.get('df', pd.DataFrame())
+        resp = req.json()
+        print(resp)
+        #df_ = resp['df']
+        df_ = pd.read_json(resp, orient='index')
+        #df_ =  req.get('df', pd.DataFrame())
         df_f = pd.DataFrame({'Resultados de búsqueda: ': df_.apply(alistar_links_df, axis=1).tolist()})
         return render_template('buscador.html',resultado=[df_f.to_html(header="true",index=False, escape=False)])
     return render_template('buscador.html')

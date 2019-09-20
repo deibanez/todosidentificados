@@ -20,6 +20,6 @@ RUN pip install -r requirements.txt
 # We copy the rest of the codebase into the image
 COPY . .
 
-CMD ["gunicorn", "app:app","-b 0.0.0.0:3000"]
+CMD ["gunicorn", "app:app","-b 0.0.0.0:3000","-t 100","--reload"]
 
 #CMD ["gunicorn", "-b", "0.0.0.0:8000", "app"]

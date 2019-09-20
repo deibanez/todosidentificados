@@ -8,4 +8,4 @@ done
 
 echo "PostgreSQL started"
 
-gunicorn --chdir ./project/api buscador_fichas:app -b 0.0.0.0:5000
+gunicorn --chdir ./project/api buscador_fichas:buscador_fichas -b 0.0.0.0:5000 -t 100 --reload

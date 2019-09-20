@@ -12,7 +12,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 #WORKDIR /usr/src/app
 COPY ./app /app
 # add and install requirements
-COPY ./requirements.txt /requirements.txt
+COPY ./requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # add entrypoint.sh

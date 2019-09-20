@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import pandas as pd
 from sqlalchemy import create_engine
 from fuzzywuzzy import fuzz
-
+import urllib.parse
 def score(row, search,col_nom):
     """partial ratio score fuzzy"""
     sc = fuzz.partial_ratio(row[col_nom].lower(), search.lower())
@@ -57,5 +57,6 @@ def read_root():
 def buscador_fichas(query: str):
     print('holaaa')
     #print(query, n)
-    df_ = buscar_n_fichas(search=query, n_=10, df_=df)
+    busqueda = urllib.parse.unquote(query)
+    df_ = buscar_n_fichas(search=busqueda, n_=10, df_=df)
     return df_.to_json(orient='index')

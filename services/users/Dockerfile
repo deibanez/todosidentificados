@@ -1,25 +1,26 @@
 # base image
-FROM python:3.7.2-slim
+#FROM python:3.7.2-slim
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 # install dependencies
 # install netcat
-RUN apt-get update && \
-    apt-get -y install netcat && \
-    apt-get clean
+#RUN apt-get update && \
+#    apt-get -y install netcat && \
+#    apt-get clean
 
 # set working directory
-WORKDIR /usr/src/app
-
+#WORKDIR /usr/src/app
+COPY ./app /app
 # add and install requirements
-COPY ./requirements.txt /usr/src/app/requirements.txt
+COPY ./requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # add entrypoint.sh
-COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
-RUN chmod +x /usr/src/app/entrypoint.sh
+#COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+#RUN chmod +x /usr/src/app/entrypoint.sh
 
 # add app
-COPY . /usr/src/app
+#COPY . /usr/src/app
 
 # run server
-CMD ["/usr/src/app/entrypoint.sh"]
+#CMD ["/usr/src/app/entrypoint.sh"]

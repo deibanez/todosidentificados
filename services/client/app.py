@@ -2,6 +2,7 @@ from flask import render_template
 from flask import Flask, session, redirect, url_for, escape, request
 import pandas as pd
 import requests
+import urllib.parse
 
 app = Flask(__name__, instance_relative_config=True)
 
@@ -13,8 +14,8 @@ def alistar_links_df(row):
 def index():
     if request.method == 'POST':
         busqueda = request.form["busqueda"]
-
-        req = requests.get('http://users:5000/buscador_fichas/'+busqueda)
+        query = urllib.parse.quote(busqueda)
+        req = requests.get('http://users:80/buscador_fichas/'+query)
         resp = req.json()
         print(resp)
         #df_ = resp['df']

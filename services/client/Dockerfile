@@ -5,21 +5,16 @@ FROM python:3
 
 # Set an environment variable with the directory
 # where we'll be running the app
-
+WORKDIR /usr/src/app
 # Create the directory and instruct Docker to operate
 # from there from now on
-#RUN mkdir /app
-#WORKDIR /app
+
 # Expose the port uWSGI will listen on
-#EXPOSE 8000
-# Copy the requirements file in order to install
-# Python dependencies
-COPY requirements.txt .
 # Install Python dependencies
+COPY . /usr/src/app
+#COPY ./requirements.txt requirements.txt
+#COPY ./app.py app.py
+
 RUN pip install -r requirements.txt
 # We copy the rest of the codebase into the image
-COPY . .
-
 CMD ["gunicorn", "app:app","-b 0.0.0.0:3000","-t 100","--reload"]
-
-#CMD ["gunicorn", "-b", "0.0.0.0:8000", "app"]

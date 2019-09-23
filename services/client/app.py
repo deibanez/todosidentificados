@@ -8,7 +8,7 @@ app = Flask(__name__, instance_relative_config=True)
 
 
 def alistar_links_df(row):
-    return "<a href={} target='_blank'>{}</a>".format(url_for('static',filename='images/'+row['fichas_id']+".jpg"),row['nombre'])
+    return "<a href={} target='_blank'>{} {}</a>".format(url_for('static',filename='images/'+row['fichas_id']+".jpg"),row['nombre'],row['score'])
 
 @app.route('/', methods= ['POST','GET'])
 def index():
@@ -17,10 +17,8 @@ def index():
         query = urllib.parse.quote(busqueda)
         req = requests.get('http://users:80/buscador_fichas/'+query)
         resp = req.json()
-        print(resp)
-        #df_ = resp['df']
         df_ = pd.read_json(resp, orient='index')
-        #df_ =  req.get('df', pd.DataFrame())
+        df_ = df_.sort_values(by='score', ascending=False)
         df_f = pd.DataFrame({'Resultados de búsqueda: ': df_.apply(alistar_links_df, axis=1).tolist()})
         return render_template('buscador.html',resultado=[df_f.to_html(header="true",index=False, escape=False)])
     return render_template('buscador.html')

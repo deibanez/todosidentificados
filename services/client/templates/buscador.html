@@ -4,29 +4,36 @@
 
 <header>
 	<h2 align="center">TODOS IDENTIFICADOS</h2>
-	<h3 align="center">BUSCADOR DE ARCHIVOS DE LA DICTADURA CHILENA (73'-90')</h3>
+	<h3 align="center">ARCHIVOS DE LA DICTADURA CHILENA (73'-90')</h3>
 </header>
 
 <nav class="menu">
   <ul>
-    <li><a href="{{url_for('index')}}">Fichas de inteligencia</a></li>
-    <li><a>Mapa: Desaparecidos y ejecutados</a></li>
-    <li><a>Buscador en libros de memoria</a></li>
-    <li><a href="{{url_for('index')}}">¿Quiénes somos?</a></li>
+    <li><a href="{{url_for('fichas')}}">Fichas de Inteligencia</a></li>
+    <li><a>Mapa del Terrorismo de Estado</a></li>
+    <li><a>Buscador de Memoria</a></li>
+    <li><a href="{{url_for('who')}}">¿Quiénes somos?</a></li>
   </ul>
 </nav>
 
-<h3 align="center">Fichas de inteligencia de la DINA recuperadas desde Colonia Dignidad</h3>
 
+{% if fichas %}
+<h3 align="center">Fichas de inteligencia de la DINA recuperadas desde Colonia Dignidad</h3>
 
 <div class="buscador" align='center'>
 <form method="POST">
         Ingresar nombre: <input type="text" name="busqueda"> <input type="submit" value="Buscar">
 </form>
 </div>
-
+{% endif %}
 {% if resultado %}
+<h3 align="center">Fichas de inteligencia de la DINA recuperadas desde Colonia Dignidad</h3>
 
+<div class="buscador" align='center'>
+	<form method="POST">
+		        Ingresar nombre: <input type="text" name="busqueda"> <input type="submit" value="Buscar">
+	</form>
+</div>
 <div class="resultado" align="center" style="margin-top:20px;">
   {% for table in resultado %}
      {{ table|safe }}
@@ -34,6 +41,17 @@
 </div>
 {%endif%}
 
+{% if who %}
+<h3 align="center">Quiénes somos</h3>
+
+<div class="who" align="center" style="margin-top:20px;">
+	<p align="center"> Somos un grupo de desarrolladores en busca de construir una plataforma cooperativa de memoria, con el objetivo de recopilar los diversos esfuerzos de documentación digital, junto con disponibilizar experiencias de fácil acceso a la información. Para esto utilizamos diversas herramientas digitales, como Buscadores y Mapas. La plataforma está desarrollada íntegramente en python (DOCKER-COMPOSE) <br> http://github.com/deibanez/todosidentificados.git
+</div>
+
+{%endif%}
+
+{% if fichas %}
 <footer>
   <p align='center'>Datos obtenidos de <a href="https://www.londres38.cl/1934/w3-article-96548.html" target="_blank">londres38</a>.</p>
 </footer> 
+{% endif %}

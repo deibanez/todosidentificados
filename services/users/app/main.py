@@ -53,20 +53,11 @@ print('## nombres_seleccionados')
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
 @app.get("/buscador_fichas/{query}")
 def buscador_fichas(query: str):
-    print('holaaa')
-    #print(query, n)
     busqueda = urllib.parse.unquote(query)
     r = extract(busqueda, d, scorer=fuzz.partial_ratio,limit=15)
     d_r = {}
-    for i in r:
-        d_r.update({r[2]:r[0]})
-    
+    for n, s, i in r:
+        d_r.update({i:{n:s}}) 
     return json.dumps(d_r)

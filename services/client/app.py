@@ -31,7 +31,7 @@ def fichas():
         return render_template('buscador.html',resultado=[df_f.to_html(header="true",index=False, escape=False)])
     return render_template('buscador.html', fichas=True)
 
-@app.route("/who", methods=['GET'])
+@app.route("/quienes", methods=['GET'])
 def who():
     return render_template('buscador.html', who=True)
 

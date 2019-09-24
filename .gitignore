@@ -7,13 +7,9 @@ venv/
 .venv
 venv
 
-services/client/static/images/
-
-images_fichas/*
-
+images_fichas_/
+images_fichas_
 # codecoverage
-services/users/htmlcov/
-
 
 # misc
 .vscode/
@@ -23,5 +19,3 @@ services/users/htmlcov/
 # misc
 .vscode/
 ignored/
-
-

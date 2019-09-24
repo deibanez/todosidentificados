@@ -7,9 +7,9 @@ venv/
 .venv
 venv
 
-images_fichas_/
-images_fichas_
-# codecoverage
+images_fichas/
+images_fichas
+.images_fichas
 
 # misc
 .vscode/

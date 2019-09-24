@@ -9,6 +9,8 @@ venv
 
 services/client/static/images/
 
+images_fichas/*
+
 # codecoverage
 services/users/htmlcov/
 

@@ -20,6 +20,7 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 # We copy the rest of the codebase into the image
-COPY . .
+COPY app.py .
+COPY ./templates templates
 
 CMD ["gunicorn", "app:app","-b 0.0.0.0:3000","-t 100","--reload"]

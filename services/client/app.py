@@ -9,7 +9,7 @@ app = Flask(__name__, instance_relative_config=True)
 
 
 def alistar_links_df(row):
-    return "<a href={} target='_blank'>{}</a>".format(url_for('static',filename='images/'+row['id']+".jpg"),row['nombre'])#,row['score'])
+    return "<a href={} target='_blank'>{}</a>".format(url_for('static',filename='images_250ppi/'+row['id']+".jpg"),row['nombre'])#,row['score'])
 
 @app.route('/', methods= ['POST','GET'])
 def fichas():

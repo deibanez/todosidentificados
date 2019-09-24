@@ -1,13 +1,18 @@
-<!doctype html>
-<title>{% block title %}{% endblock %} TODOS IDENTIFICADOS - BUSCADOR DE ARCHIVOS DE LA DICTADURA CHILENA</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
 
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>{% block title %}{% endblock %}Todos Identificados</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
 <header>
 	<h2 align="center">TODOS IDENTIFICADOS</h2>
 	<h3 align="center">ARCHIVOS DE LA DICTADURA CHILENA (73'-90')</h3>
 </header>
 
-<nav class="menu">
+<nav class="navbar-menu">
   <ul>
     <li><a href="{{url_for('fichas')}}">Fichas de Inteligencia</a></li>
     <li><a>Mapa del Terrorismo de Estado</a></li>
@@ -16,24 +21,16 @@
   </ul>
 </nav>
 
-
-{% if fichas %}
-<h3 align="center">Fichas de inteligencia de la DINA recuperadas desde Colonia Dignidad</h3>
-
-<div class="buscador" align='center'>
+{% if (fichas or resultado) %}
+<h3 align="center">Fichas de inteligencia de la DINA</h3>
+<p align="center">Cerca de 45mil fichas fueron encontradas en Colonia Dignidad, dando luces de ser sólo una parte de un sistema mayor para la persecución ideológica.</p>
+<div class="container" align='center'>
 <form method="POST">
-        Ingresar nombre: <input type="text" name="busqueda"> <input type="submit" value="Buscar">
+	<p> Ingresar nombre: <input type="text" name="busqueda"> <input type="submit" value="Buscar">
 </form>
 </div>
 {% endif %}
 {% if resultado %}
-<h3 align="center">Fichas de inteligencia de la DINA recuperadas desde Colonia Dignidad</h3>
-
-<div class="buscador" align='center'>
-	<form method="POST">
-		        Ingresar nombre: <input type="text" name="busqueda"> <input type="submit" value="Buscar">
-	</form>
-</div>
 <div class="resultado" align="center" style="margin-top:20px;">
   {% for table in resultado %}
      {{ table|safe }}
@@ -43,15 +40,15 @@
 
 {% if who %}
 <h3 align="center">Quiénes somos</h3>
-
 <div class="who" align="center" style="margin-top:20px;">
-	<p align="center"> Somos un grupo de desarrolladores en busca de construir una plataforma cooperativa de memoria, con el objetivo de recopilar los diversos esfuerzos de documentación digital, junto con disponibilizar experiencias de fácil acceso a la información. Para esto utilizamos diversas herramientas digitales, como Buscadores y Mapas. La plataforma está desarrollada íntegramente en python (DOCKER-COMPOSE) <br> http://github.com/deibanez/todosidentificados.git
+	<p align="center">Somos un grupo de programadores y cientistas de datos que decidimos construir una plataforma de acceso inteligente a la documentación disponible de la dictadura.<br><br>La plataforma está desarrollada en Python y desplegada con Docker-Compose, ¡ayúdanos a hacerla crecer!<br> <a href="http://github.com/deibanez/todosidentificados.git">http://github.com/deibanez/todosidentificados.git</a>
 </div>
 
 {%endif%}
 
-{% if fichas %}
 <footer>
-  <p align='center'>Datos obtenidos de <a href="https://www.londres38.cl/1934/w3-article-96548.html" target="_blank">londres38</a>.</p>
-</footer> 
+{% if (fichas or resultado) %}
+  <p align='center'>Fichas obtenidas de <a href="https://www.londres38.cl/1934/w3-article-96548.html" target="_blank">Londres38</a>.</p>
 {% endif %}
+<img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Visitas">
+</footer> 

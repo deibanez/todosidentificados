@@ -1,27 +1,39 @@
 version: "3.7"
 
 services:
+  client:
+    build:
+           context: ./services/client
+           dockerfile: Dockerfile
+    volumes:
+          - type: bind
+            source: ./images_fichas
+            target: /app/static/images_250ppi
+            volume:
+                    nocopy: True
+    ports:
+        - 3007:3000
+    depends_on:
+        - users
   users:
     build:
       context: ./services/users
       dockerfile: Dockerfile
-    volumes:
-      - "./services/users:/usr/src/app"
     ports:
       - 5001:5000
     environment:
       - FLASK_APP=project/__init__.py
       - FLASK_ENV=development
       - APP_SETTINGS=project.config.DevelopmentConfig
-      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/users_dev
-      - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/users_test
+      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/fichas_dina
+      - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/fichas_dina
       - SECRET_KEY=my_precious
     depends_on:
       - users-db
 
   users-db:
     build:
-      context: ./services/users/project/db
+      context: ./services/users/app/db
       dockerfile: Dockerfile
     ports:
       - 5435:5432
@@ -39,13 +51,5 @@ services:
       - users
       - client
 
-  client:
-    build:
-      context: ./services/client
-      dockerfile: Dockerfile
-    volumes:
-      - "./services/client:/usr/src/app"
-    ports:
-      - 3007:3000
-    depends_on:
-      - users
+        #volumes:
+ #  - client_volume: /root/todosidentificados/services/client

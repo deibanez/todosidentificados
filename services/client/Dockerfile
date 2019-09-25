@@ -1,11 +1,13 @@
 # Dockerfile-flask
 # We simply inherit the Python 3 image. This image does
 # not particularly care what OS runs underneath
-FROM python:3
+FROM python:3.7
 
 # Set an environment variable with the directory
 # where we'll be running the app
-
+#WORKDIR /usr/src/app
+# Create the directory and instruct Docker to operate
+# from there from now on
 # Create the directory and instruct Docker to operate
 # from there from now on
 RUN mkdir /app
@@ -18,10 +20,8 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 # We copy the rest of the codebase into the image
-COPY . .
+COPY app.py .
+COPY ./templates templates
+COPY ./static/style.css static/style.css
 
-# Finally, we run uWSGI with the ini file we
-# created earlier
-CMD ["gunicorn", "-b", "0.0.0.0", "app"]
-
-#CMD ["gunicorn", "-b", "0.0.0.0:8000", "app"]
+CMD ["gunicorn", "app:app","-b 0.0.0.0:3000","-t 100","--reload"]

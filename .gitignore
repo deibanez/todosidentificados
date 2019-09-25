@@ -7,17 +7,18 @@ venv/
 .venv
 venv
 
-# codecoverage
-services/users/htmlcov/
+images_fichas/
+images_fichas
+.images_fichas
 
 
 # misc
 .vscode/
+
+logs/
 
 
 
 # misc
 .vscode/
 ignored/
-
-

@@ -7,12 +7,14 @@ venv/
 .venv
 venv
 
-images_fichas/
-images_fichas
-.images_fichas
+images_fichas_/
+images_fichas_
+.images_fichas_
 
 # misc
 .vscode/
+
+logs/
 
 
 

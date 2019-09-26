@@ -15,7 +15,7 @@
 <nav class="navbar-menu">
   <ul>
     <li><a href="{{url_for('fichas')}}">Fichas de Inteligencia</a></li>
-    <li><a>Mapa del Terrorismo de Estado</a></li>
+    <li><a href="{{url_for('map')}}">Mapa del Terrorismo de Estado</a></li>
     <li><a>Buscador de Memoria</a></li>
     <li><a href="{{url_for('who')}}">¿Quiénes somos?</a></li>
   </ul>
@@ -38,13 +38,17 @@
 </div>
 {%endif%}
 
+
 {% if who %}
 <h3 align="center">Quiénes somos</h3>
 <div class="who" align="center" style="margin-top:20px;">
 	<p align="center">Somos un grupo de programadores y cientistas de datos que decidimos construir una plataforma de acceso inteligente a la documentación disponible de la dictadura.<br><br>La plataforma está desarrollada en Python y desplegada con Docker-Compose, ¡ayúdanos a hacerla crecer!<br> <a href="http://github.com/deibanez/todosidentificados.git">http://github.com/deibanez/todosidentificados.git</a>
 </div>
-
 {%endif%}
+
+{% if map %}
+ <iframe src="http://map:80/index_map.html" height="200" width="300"></iframe>
+{% endif%}
 
 <footer>
 {% if (fichas or resultado) %}

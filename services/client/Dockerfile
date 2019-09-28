@@ -22,6 +22,6 @@ RUN pip install -r requirements.txt
 # We copy the rest of the codebase into the image
 COPY app.py .
 COPY ./templates templates
-COPY ./static/style.css static/style.css
+COPY ./static static
 
 CMD ["gunicorn", "app:app","-b 0.0.0.0:3000","-t 100","--reload"]

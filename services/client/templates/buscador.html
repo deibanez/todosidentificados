@@ -47,12 +47,23 @@
 {%endif%}
 
 {% if map %}
- <iframe src="http://map:80/index_map.html" height="200" width="300"></iframe>
+
+<h3 align="center">Mapa del Terrorismo de Estado</h3>
+<p align="center">El Estado dictatorial exterminó a miles de personas por razones políticas, incluso en territorio extranjero. La Comisión Nacional de Verdad y Reconciliación (90'-91') cifró en 2.298 los casos reconocidos como parte del genocidio (Informe Rettig) .<br><br>versión para Escritorio</p>
+
+<div class="embed-container" align="center">
+	<iframe src="{{url_for('static', filename='index_map.html')}}" allowfullscreen style="width: 100%; min-height:400px"></iframe>
+</div>
 {% endif%}
 
 <footer>
 {% if (fichas or resultado) %}
   <p align='center'>Fichas obtenidas de <a href="https://www.londres38.cl/1934/w3-article-96548.html" target="_blank">Londres38</a>.</p>
+
 {% endif %}
+{% if map %}
+  <p align='center'>Datos obtenidos de <a href="http://github.com/danilofreire/pinochet">pinochet: Packages data about the victims of the Pinochet regime</a>
+{% endif%}
+
 <img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Visitas">
 </footer> 

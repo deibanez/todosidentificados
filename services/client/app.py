@@ -35,5 +35,14 @@ def fichas():
 def who():
     return render_template('buscador.html', who=True)
 
+@app.route("/mapa", methods=['GET'])
+def map():
+        return render_template('buscador.html', map=True)
+
+#@app.route("/", methods=['GET','POST'])
+#def index():
+#        return render_template('buscador.html', fichas=True)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

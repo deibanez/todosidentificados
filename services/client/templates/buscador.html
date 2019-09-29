@@ -15,7 +15,7 @@
 <nav class="navbar-menu">
   <ul>
     <li><a href="{{url_for('fichas')}}">Fichas de Inteligencia</a></li>
-    <li><a href="{{url_for('map')}}">Mapa del Terrorismo de Estado</a></li>
+    <li><a href="{{url_for('map')}}">Geografía del exterminio</a></li>
     <li><a>Buscador de Memoria</a></li>
     <li><a href="{{url_for('who')}}">¿Quiénes somos?</a></li>
   </ul>
@@ -40,7 +40,7 @@
 
 
 {% if who %}
-<h3 align="center">Quiénes somos</h3>
+<h3 align="center">¿Quiénes somos?</h3>
 <div class="who" align="center" style="margin-top:20px;">
 	<p align="center">Somos un grupo de programadores y cientistas de datos que decidimos construir una plataforma de acceso inteligente a la documentación disponible de la dictadura.<br><br>La plataforma está desarrollada en Python y desplegada con Docker-Compose, ¡ayúdanos a hacerla crecer!<br> <a href="http://github.com/deibanez/todosidentificados.git">http://github.com/deibanez/todosidentificados.git</a>
 </div>
@@ -48,12 +48,14 @@
 
 {% if map %}
 
-<h3 align="center">Mapa del Terrorismo de Estado</h3>
-<p align="center">El Estado dictatorial exterminó a miles de personas por razones políticas, incluso en territorio extranjero. La Comisión Nacional de Verdad y Reconciliación (90'-91') cifró en 2.298 los casos reconocidos como parte del genocidio (Informe Rettig) .<br><br>versión para Escritorio</p>
+<h3 align="center">Geografía del exterminio</h3>
+<p align="center">El Estado dictatorial exterminó a miles de personas por razones políticas, incluso en territorio extranjero. La Comisión Nacional de Verdad y Reconciliación (90'-91') cifró en 2.298 los casos reconocidos como parte del genocidio (Informe Rettig), siendo georreferenciados a continuación.<br><br>(Versión optimizada para Escritorio)</p>
+
 
 <div class="embed-container" align="center">
-	<iframe src="{{url_for('static', filename='index_map.html')}}" allowfullscreen style="width: 100%; min-height:400px"></iframe>
+	                <iframe src="http://todosidentificados.cl/geo" allowfullscreen style="width: 100%; min-height:400px"></iframe>
 </div>
+
 {% endif%}
 
 <footer>

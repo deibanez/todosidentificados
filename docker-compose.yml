@@ -1,6 +1,13 @@
 version: "3.7"
 
 services:
+        #map:
+        #build:
+        # context: ./services/map
+        #   dockerfile: Dockerfile
+        #ports:
+        #- 80:9080
+
   client:
     build:
            context: ./services/client

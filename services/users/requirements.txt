@@ -1,6 +1,6 @@
 fuzzywuzzy==0.17.0
 gunicorn==19.9.0
-numpy==1.17.2
+numpy==1.22.0
 pandas==0.25.1
 psycopg2-binary==2.8.3
 pydantic==0.32.2
